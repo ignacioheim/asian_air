@@ -1,0 +1,121 @@
+html {
+    background-color: rgb(231, 230, 230);
+    font-family: 'Roboto', sans-serif;
+}
+   
+body {
+    background-color: rgb(231, 230, 230);
+    font-family: 'Roboto', sans-serif;
+}
+   h1 {
+    font-family: 'Abril Fatface', serif;
+    background-color: rgb(231, 230, 230);
+    margin: 20px;
+   }
+
+#search {
+    height: 100px;
+    width: 1100px;
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+    background-color: #297479;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 25px;
+}
+
+#cityOri {
+    height: 48px;
+    width: 200px;
+    padding: 0 20px;
+    font-size: 15px;
+    line-height: 48px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+
+#cityDes {
+    height: 48px;
+    width: 200px;
+    padding: 0 20px;
+    font-size: 15px;
+    line-height: 48px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#dateIni {
+    height: 48px;
+    padding: 0 20px;
+    width: 180px;
+    margin-left: 10px;
+    font-size: 15px;
+    line-height: 48px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+
+#dateFin {
+    height: 48px;
+    width: 180px;
+    padding: 0 20px;
+    font-size: 15px;
+    line-height: 48px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+}
+
+#passengers {
+    height: 48px;
+    width: 150px;
+    padding: 0 20px;
+    margin: 10px;
+    font-size: 15px;
+    line-height: 48px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: none;
+}
+
+#btn-1 {
+    height: 48px;
+    padding: 0 20px;
+    font-size: 15px;
+    line-height: 48px;
+    background-color: #fa503f;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: white;
+    border-radius: 25px;
+    border: none;
+}
+
+#section {
+    margin-left: 100px;
+    margin-right: 150px;
+    margin-top: 30px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-weight: bold;
+    background-color: #297479;
+}
