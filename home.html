@@ -21,11 +21,24 @@
             <input id="cityDes" type="text" placeholder="Destino">
             <input id="dateIni" type="date" placeholder="Ida   " >
             <input id="dateFin" type="date" placeholder="Vuelta">    
-            <input id="passengers" type="number" placeholder="Pasajeros">        
+            <input id="passengers" type="number" placeholder="Pasajeros" min=1 max=4>    
+            <select id="class">
+                <option value="economica">Económica</option>
+                <option value="ejecutiva">Ejecutiva</option>
+                <option value="primera">Primera Clase</option>    
             <input type="submit" value="&#128269 Buscar" id="btn-1">       
         </form>
     </div>
-    <div id="section"></div>
+    <div class="container">
+        <div class="row">
+          <div class="col-12"></div>
+          <div class="col-3" id="col1"></div>
+          <div class="col-3" id="col2"></div>
+          <div class="col-2" id="col3"></div>
+          <div class="col-2" id="col4"></div>
+          <div class="col-2" id="col5"></div>
+        </div>
+      </div>
     <script src="archivo.js"></script>
 </body>
 </html>

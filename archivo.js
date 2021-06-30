@@ -1,13 +1,61 @@
 // CLASE TRIP
 
 class Trip {
-    constructor (cityOrigin, cityDest, dateBeg, dateFin, passengers) {
+    constructor (cityOrigin, cityDest, dateBeg, dateFin, passengers, classChosen) {
         this.cityOrigin = cityOrigin;
         this.cityDest = cityDest;
         this.dateBeg = dateBeg;
         this.dateFin = dateFin;
         this.passengers = passengers;
+        this.classChosen = classChosen;
+
     }
+    discountRate() {
+        if (this.passengers == 1) {
+            this.discount = 1;
+        }
+        else if (this.passengers == 2) {
+            this.discount = 0.95;
+        }
+        else if (this.passengers == 3) {
+            this.discount = 0.90;
+        } 
+        else if (this.passengers == 4) {
+            this.discount = 0.85
+        }
+    }
+    claseType() {
+        if (this.classChosen == "economica") {
+            this.amount = 1 
+        } 
+        else if (this.classChosen == "ejecutiva") {
+            this.amount = 1.2
+        } 
+        else if (this.classChosen == "primera") {
+            this.amount = 1.3
+        }
+    }
+ 
+
+    priceAir() {
+        switch (this.cityDest) {
+            case "Tokio":
+              return Intl.NumberFormat().format(((this.passengers * 32000) * this.discount) * this.amount);
+              break; // APLICO Intl.NumberFormat().format() para mostrar decimales
+            case "Shangai":
+               return Intl.NumberFormat().format(((this.passengers * 40000) * this.discount) * this.amount);
+               break; // APLICO Intl.NumberFormat().format() para mostrar decimales
+            case "Hong Kong":
+               return Intl.NumberFormat().format(((this.passengers * 45000) * this.discount) * this.amount);
+               break; // APLICO Intl.NumberFormat().format() para mostrar decimales
+            case "Singapur":
+               return Intl.NumberFormat().format(((this.passengers * 50000) * this.discount) * this.amount);
+               break; // APLICO Intl.NumberFormat().format() para mostrar decimales
+          }
+    }
+
+
+
     cantidadDias(){
         if(this.dateBeg > this.dateFin){
             alert("Elige una fecha correcta.")
@@ -50,6 +98,8 @@ $(document).ready(function(){
 }) 
 
 
+
+
 // FORMULARIO DE INGRESO DE VIAJE
 let miFormulario = document.getElementById("formulario")
 
@@ -63,18 +113,34 @@ function validarFormulario(e) {
     let dateBeg = formulario.children[2].value;
     let dateFIn = formulario.children[3].value;
     let passengers = formulario.children[4].value;
+    let classChosen = document.getElementById("class").value;
 
-    const tripOne = new Trip(cityOri, cityDes, dateBeg, dateFIn, passengers);
-
+    const tripOne = new Trip(cityOri, cityDes, dateBeg, dateFIn, passengers,classChosen);
+    tripOne.discountRate();
+    tripOne.claseType();
     //console.log(tripOne)
-    $("#section").append(`
-                    <p>${tripOne.cityOrigin}</p>
-                    <p>${tripOne.cityDest}</p>                    
+    $(".col-12").append(`
+                    <h2>${tripOne.cityOrigin} a ${tripOne.cityDest}</h2>`)
+
+    $("#col1").append(`<h5>Fecha de ida</h5>
                     <p>${tripOne.dateBeg}</p>
+                    `) 
+    $("#col2").append(`                   
+                    <h5>Fecha de vuelta</h5>
                     <p>${tripOne.dateFin}</p>
+                    `) 
+    $("#col3").append( `
+                    <h5>Pasajeros</h5>
                     <p>${tripOne.passengers}</p>
+                    `)      
+    $("#col4").append( `
+                    <h5>Precio</h5>
+                    <p>${tripOne.priceAir()}</p>
+                    `)  
+                    console.log(tripOne.priceAir());                                 
+    $("#col5").append( `
+                        <button id="btn1">Comprar</button>
                     `)
-                      
+                                 
 
 }
-
