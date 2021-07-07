@@ -14,20 +14,22 @@
  const URLJSON = "db/imagenes.json"
 
  $("#btn").click( () => {
- $.getJSON(URLJSON, function (respuesta, estado) {   console.log(respuesta)
-    if(estado === "success") {
-        let misdatos = respuesta;
-        for (const dato of misdatos) {
-            if (data.trip["cityDest"] == dato.id) {
+ $.getJSON(URLJSON, function (respuesta, estado) {  
+             if(estado === "success") {
+                console.log(estado)
+                console.log(respuesta)
+                let misdatos = respuesta;
+                  for (const dato of misdatos) {
+                     if (data.trip["cityDest"] == dato.id) {
             $("#color").prepend(`<div>
                                 <img src="${dato.image}" width="700" height="400">
                                 </div>`)    }
                                     }
-                            }
+                            } else {console.log("hola")}
                                                 }
         )  
     }  
     )
 
-    console.log(respuesta)
+
                                     
