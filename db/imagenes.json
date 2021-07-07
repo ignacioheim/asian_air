@@ -1,0 +1,18 @@
+[
+    {   
+        "id": "Shangai",
+        "image": "./img/shangai.jpg"
+    },
+    {   
+        "id": "Tokio",
+        "image": "./img/tokio.jpg"
+    },
+    {   
+        "id": "Singapur",
+        "image": "./img/singapur.jpg"
+    },
+    {   
+        "id": "Hong Kong",
+        "image": "./img/hong-kong.jpg"
+    }
+]

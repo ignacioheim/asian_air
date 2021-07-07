@@ -97,10 +97,17 @@ $(document).ready(function(){
     })
 }) 
 
-
-
+$(document).ready(function(){
+    $("#clean").mouseover(function(){
+        $("#clean").css("background-color", "red");
+    });
+    $("#clean").mouseout(function(){
+        $("#clean").css("background-color", "#fa503f")
+    })
+}) 
 
 // FORMULARIO DE INGRESO DE VIAJE
+
 let miFormulario = document.getElementById("formulario")
 
 miFormulario.addEventListener("submit", validarFormulario)
@@ -109,38 +116,54 @@ function validarFormulario(e) {
     e.preventDefault();
     let formulario = e.target
     let cityOri = formulario.children[0].value;
+    let cityChoosenOri = cityOri.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     let cityDes = formulario.children[1].value;
+    let cityChoosenDes = cityDes.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     let dateBeg = formulario.children[2].value;
     let dateFIn = formulario.children[3].value;
     let passengers = formulario.children[4].value;
     let classChosen = document.getElementById("class").value;
 
-    const tripOne = new Trip(cityOri, cityDes, dateBeg, dateFIn, passengers,classChosen);
+    const tripOne = new Trip(cityChoosenOri, cityChoosenDes, dateBeg, dateFIn, passengers,classChosen);
+
     tripOne.discountRate();
-    tripOne.claseType();
-    //console.log(tripOne)
-    $(".col-12").append(`
+    tripOne.claseType();   
+
+    const enJSON = JSON.stringify({ trip: tripOne,
+                                    discount: tripOne.discountRate(),
+                                    price: tripOne.priceAir(),
+                                    days: tripOne.cantidadDias()
+                                });
+
+    localStorage.setItem("Trip", enJSON);
+
+    //console.log(tripOne) 
+    $(".col-12").html(`
                     <h2>${tripOne.cityOrigin} a ${tripOne.cityDest}</h2>`)
 
-    $("#col1").append(`<h5>Fecha de ida</h5>
+    $("#col1").html(`<h5>Fecha de ida</h5>
                     <p>${tripOne.dateBeg}</p>
                     `) 
-    $("#col2").append(`                   
+    $("#col2").html(`                   
                     <h5>Fecha de vuelta</h5>
                     <p>${tripOne.dateFin}</p>
                     `) 
-    $("#col3").append( `
+    $("#col3").html( `
                     <h5>Pasajeros</h5>
                     <p>${tripOne.passengers}</p>
                     `)      
-    $("#col4").append( `
+    $("#col4").html( `
                     <h5>Precio</h5>
                     <p>${tripOne.priceAir()}</p>
-                    `)  
-                    console.log(tripOne.priceAir());                                 
-    $("#col5").append( `
-                        <button id="btn1">Comprar</button>
-                    `)
-                                 
-
+                    `)                                   
+    $("#col5").html( `
+                    <button id="btn1">Reservar</button>
+                    `);                  
+    document.getElementById("btn1").onclick = function () {
+                location.href = "./buy.html";
+                    };     
+    $(".container").show()                                               
 }
+                $("#clean").click(function(){
+                    $(".container").fadeOut(1000);
+                            }); 
